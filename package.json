@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "predeploy": "ng deploy --base-href=https://HackStackPakistan.github.io/hspk-23-binary-bots/",
+    "deploy": "ng build"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +29,7 @@
     "@angular/cli": "~16.2.1",
     "@angular/compiler-cli": "^16.2.0",
     "@types/jasmine": "~4.3.0",
+    "angular-cli-ghpages": "^1.0.7",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
