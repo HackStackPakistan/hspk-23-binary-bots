@@ -9,4 +9,9 @@ import { members } from './members';
 export class AppComponent {
   title = 'hspk-23-binary-bots';
   members = members;
+
+  redirectTo(url:string){
+    
+    window.open(url, '_blank');
+  }
 }

@@ -25,7 +25,7 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
-    
+    align-items: center;
 }
 
 .container img{
@@ -41,6 +41,21 @@ body{
     font-size: 20px;
     font-weight: bolder;
     margin-top: 2em;
+    border: 2px solid yellow;
+    padding: 15px 30px;
+    border-radius: 10px;
+    width: 15em;
+}
+
+.container h4:hover{
+    
+    border: 2px solid yellow;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background-color: yellow;
+    color: black;
+    width: 15em;
+    cursor: pointer;
 }
 
 .text-align{
