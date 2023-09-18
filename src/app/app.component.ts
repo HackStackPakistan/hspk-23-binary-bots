@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { members } from './members';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hspk-23-binary-bots';
+  members = members;
 }
