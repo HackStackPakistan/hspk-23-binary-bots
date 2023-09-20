@@ -17,7 +17,7 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     
 }
 
@@ -33,6 +33,7 @@ body{
     margin: 0 5em;
     width: 300px;
     height: 300px;
+    padding: 5px;
     border: 2px dashed yellow;
     
 }
@@ -50,8 +51,6 @@ body{
 .container h4:hover{
     
     border: 2px solid yellow;
-    padding: 15px 30px;
-    border-radius: 10px;
     background-color: yellow;
     color: black;
     width: 15em;
@@ -65,4 +64,62 @@ body{
 
 .member-col{
     display: flex;
+}
+
+/* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {
+
+} */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {
+
+} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    .member-col{
+        display: flex;
+        flex-direction: column;  
+        margin-bottom: 2em; 
+    }
+    .container .member-col div{
+        margin: 2em 0em;
+    }
+
+    .container h1{
+        margin: 1em;
+        font-size: 35px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .container{
+        height: 100vh;
+    }
+    .container img{
+        margin: 0 2.5em;
+        width: 250px;
+        height: 250px;
+    }
+
+    .container h4{
+        width: 14em;
+        font-size: 18px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .container img{
+        margin: 0 4em;
+        width: 280px;
+        height: 280px;
+    }
+
+    .container h4{
+        width: 15em;
+        font-size: 20px;
+    }
 }
