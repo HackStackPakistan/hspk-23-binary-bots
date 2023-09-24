@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "meetuppk-8055d": {
+      "hosting": {
+        "hspk-23-binary-bots": [
+          "meetuppk-8055d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "meetuppk-8055d"
+  }
+}

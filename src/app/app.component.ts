@@ -1,5 +1,15 @@
 import { Component } from '@angular/core';
-import { members } from './members';
+import { AuthService } from './services/auth.service';
+import { Auth,signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+// import { configDotenv } from "dotenv";
+
+
+// import{firest}
+// configDotenv();
+// import{firest}
+// process.env['LOGGING_THIS'];
+
+// const Authi=getAuth();
 
 @Component({
   selector: 'app-root',
@@ -7,11 +17,42 @@ import { members } from './members';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'hspk-23-binary-bots';
-  members = members;
+  title = 'angfor';
 
-  redirectTo(url:string){
+  constructor(private auth: AuthService,private auth2:Auth) { }
+
+
+
+  inSubmission = false;
+  async putData() {
+
+  }
+
+  async signIn(){
     
-    window.open(url, '_blank');
+    try{
+      await signInWithEmailAndPassword(this.auth2,"smahs@gmail.com","2233232")
+    }catch(e){
+
+    }
+  }
+
+  async logout(){
+    await signOut(this.auth2)
+    console.log()
+  }
+
+  async register() {
+    
+    try {
+
+      await this.auth.createUser();
+      
+      this.inSubmission = true;
+    }
+
+    catch (e) {
+      console.log("HaingHardTime")
+    }
   }
 }
