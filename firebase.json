@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "hspk-23-binary-bots",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
