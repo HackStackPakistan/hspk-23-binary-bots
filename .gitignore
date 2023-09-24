@@ -50,3 +50,7 @@ Thumbs.db
 
 #dotenv
 .env
+
+# Environment
+environment.development.ts
+environment.ts
