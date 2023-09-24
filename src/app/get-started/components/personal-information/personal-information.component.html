@@ -1,0 +1,77 @@
+<div class="stepsdemo-content">
+  <p-card>
+    <ng-template pTemplate="title"> Personal Information </ng-template>
+    <ng-template pTemplate="subtitle">
+      Enter your personal information
+    </ng-template>
+    <ng-template pTemplate="content">
+      <form [formGroup]="personalInfoFormGroup" class="p-fluid">
+        <div class="field">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            required
+            pInputText
+            formControlName="name"
+          />
+          <small
+            *ngIf="
+              personalInfoFormGroup.controls['name'].invalid &&
+              (personalInfoFormGroup.controls['name'].dirty ||
+                personalInfoFormGroup.controls['name'].touched)
+            "
+            class="p-error"
+            >{{ getErrorMessages('name') }}</small
+          >
+        </div>
+
+        <div class="field">
+          <label for="age">Age</label>
+          <p-inputNumber inputId="age" formControlName="age"> </p-inputNumber>
+
+          <small
+            *ngIf="
+              personalInfoFormGroup.controls['age'].invalid &&
+              (personalInfoFormGroup.controls['age'].dirty ||
+                personalInfoFormGroup.controls['age'].touched)
+            "
+            class="p-error"
+            >{{ getErrorMessages('age') }}
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="gender">Gender</label>
+          <p-dropdown id="gender" [options]="genders" formControlName="gender" optionLabel="label" optionValue="value" placeholder="Gender"></p-dropdown>
+        </div>
+
+        <div class="field">
+          <label for="gender">About</label>
+          <textarea rows="5" cols="30" pInputTextarea formControlName="biography" placeholder="You gotta write atleast 50 words!"></textarea>
+          <small
+            *ngIf="
+              personalInfoFormGroup.controls['biography'].invalid &&
+              (personalInfoFormGroup.controls['biography'].dirty ||
+                personalInfoFormGroup.controls['biography'].touched)
+            "
+            class="p-error"
+            >{{ getErrorMessages('biography') }}</small
+          >
+        </div>
+      </form>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="grid grid-nogutter justify-content-end">
+        <p-button
+          label="Next"
+          (onClick)="nextPage()"
+          [disabled]="!personalInfoFormGroup.valid"
+          [loading]="isAPIBeingCalled"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>
+
+<p-toast [life]="5000"></p-toast>

@@ -1,12 +1,18 @@
 @import "primeng/resources/themes/mdc-dark-indigo/theme.css";
 
+html {
+    font-size: 14px;
+}
+
 body {
     font-family: var(--font-family);
     margin: 0px;
     padding: 0px;
 }
 
-.p-invalid {
-    color: rgb(188, 44, 44);
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
-
