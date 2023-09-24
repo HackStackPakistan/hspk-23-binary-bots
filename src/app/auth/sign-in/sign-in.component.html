@@ -1,0 +1,64 @@
+<div class="container flex justify-content-center align-items-center">
+  <form
+    class="flex surface-card flex-column gap-3 row p-5 border-round-lg"
+    [formGroup]="signInForm"
+  >
+    <div class="flex flex-column gap-1">
+      <input
+        class="w-100 p-inputtext-sm"
+        type="text"
+        pInputText
+        formControlName="email"
+        placeholder="Email"
+      />
+      <small
+        *ngIf="
+          signInForm.controls['email'].invalid &&
+          (signInForm.controls['email'].dirty ||
+            signInForm.controls['email'].touched)
+        "
+        class="p-invalid"
+        >This field is required.</small
+      >
+    </div>
+
+    <div class="flex flex-column gap-1">
+      <input
+        class="w-100 p-inputtext-sm"
+        type="password"
+        pInputText
+        formControlName="password"
+        placeholder="Password"
+      />
+      <small
+        *ngIf="
+          signInForm.controls['password'].invalid &&
+          (signInForm.controls['password'].dirty ||
+            signInForm.controls['password'].touched)
+        "
+        class="p-invalid"
+        >This field is required.</small
+      >
+    </div>
+
+    <div class="text-center">
+        <a [routerLink]="'/auth/sign-up'">Wanna create an account?</a>
+    </div>
+
+    <div class="flex gap-2 p-inputtext-sm">
+      <p-checkbox value="New York" inputId="remember"></p-checkbox>
+      <label for="remember">Remember me?</label>
+    </div>
+
+    <div class="w-100 flex justify-content-center">
+      <p-button
+        class="w-100"
+        label="Submit"
+        [loading]="isAPIBeingCalled"
+        (onClick)="loginUser()"
+      ></p-button>
+    </div>
+  </form>
+</div>
+
+<p-toast [life]="10000"></p-toast>

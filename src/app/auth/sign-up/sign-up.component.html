@@ -1,0 +1,41 @@
+<div class="container flex justify-content-center align-items-center">
+  <form
+    class="flex surface-card flex-column gap-3 row p-5 border-round-lg"
+    [formGroup]="signUpForm"
+  >
+    <div>
+      <input
+        class="w-100 p-inputtext-sm"
+        type="text"
+        pInputText
+        formControlName="email"
+        placeholder="Email"
+      />
+    </div>
+
+    <div>
+      <input
+        class="w-100 p-inputtext-sm"
+        type="password"
+        pInputText
+        formControlName="password"
+        placeholder="Password"
+      />
+    </div>
+
+    <div class="text-center">
+      <a [routerLink]="'/auth/sign-in'">Already have an account?</a>
+    </div>
+
+    <div class="card flex justify-content-center">
+      <p-button
+        label="Submit"
+        [loading]="isAPIBeingCalled"
+        [disabled]="signUpForm.invalid"
+        (onClick)="createUser()"
+      ></p-button>
+    </div>
+  </form>
+</div>
+
+<p-toast [life]="10000"></p-toast>
