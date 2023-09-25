@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="card surface-card border-round-lg">
+        <p-steps [model]="items" [readonly]="false" [activeIndex]="activeIndex" (activeIndexChange)="onActiveIndexChange($event)"></p-steps>
+    </div>
+
+    <router-outlet></router-outlet>
+</div>
