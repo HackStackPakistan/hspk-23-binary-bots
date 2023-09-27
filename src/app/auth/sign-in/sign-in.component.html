@@ -9,7 +9,7 @@
       <h3 class="text-2xl my-1 sign">SignIn</h3>
     </div>
     <div class="flex flex-column gap-1 h-4rem">
-      <input class="w-100 p-inputtext-sm" type="text" pInputText formControlName="email" placeholder="Email" />
+      <input class="w-100 p-inputtext-sm text-base" type="text" pInputText formControlName="email" placeholder="Email" />
       <small *ngIf="
           signInForm.controls['email'].invalid &&
           (signInForm.controls['email'].dirty ||
@@ -18,7 +18,7 @@
     </div>
 
     <div class="flex flex-column gap-1 h-4rem">
-      <input class="w-100 p-inputtext-sm" type="password" pInputText formControlName="password"
+      <input class="w-100 p-inputtext-sm text-base" type="password" pInputText formControlName="password"
         placeholder="Password" />
       <small *ngIf="
           signInForm.controls['password'].invalid &&
