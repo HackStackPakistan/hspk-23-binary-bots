@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
+// import { AuthService } from './services/auth.service';
 import { Auth,signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 // import { configDotenv } from "dotenv";
 
@@ -19,7 +19,7 @@ import { Auth,signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 export class AppComponent {
   title = 'angfor';
 
-  constructor(private auth: AuthService,private auth2:Auth) { }
+  constructor(private auth2:Auth) { }
 
 
 
@@ -46,7 +46,7 @@ export class AppComponent {
     
     try {
 
-      await this.auth.createUser();
+      // await this.auth.createUser();
       
       this.inSubmission = true;
     }
