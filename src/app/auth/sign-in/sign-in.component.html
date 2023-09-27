@@ -1,70 +1,46 @@
 <div class="container flex justify-content-center align-items-center">
-  <form
-    class="flex surface-card flex-column gap-3 w-50 row p-5 border-round-lg"
-    [formGroup]="signInForm"
-  >
-  <div class="flex flex-column gap-2">
-
-  </div>
-    <div class="flex flex-column gap-1">
-      <input
-        class="w-100 p-inputtext-sm"
-        type="text"
-        pInputText
-        formControlName="email"
-        placeholder="Email"
-      />
-      <small
-        *ngIf="
+  <form class="flex surface-card flex-column gap-3 w-3 row p-5 border-round-lg h-32rem" [formGroup]="signInForm" keydown.enter="createUser()">
+    <div class="flex flex-column gap-4">
+      <h2
+        class="text-red-500 hover:text-red-700 cursor-pointer text-center text-6xl mt-2 mb-3 fadein animation-duration-1000"
+        [routerLink]="'/'">MeetupPK</h2>
+    </div>
+    <div>
+      <h3 class="text-2xl my-1 sign">SignIn</h3>
+    </div>
+    <div class="flex flex-column gap-1 h-4rem">
+      <input class="w-100 p-inputtext-sm text-base" type="text" pInputText formControlName="email" placeholder="Email" />
+      <small *ngIf="
           signInForm.controls['email'].invalid &&
           (signInForm.controls['email'].dirty ||
             signInForm.controls['email'].touched)
-        "
-        class="p-error"
-        >This field is required.</small
-      >
+        " class="p-error font-medium">Enter valid email in the required field</small>
     </div>
 
-    <div class="flex flex-column gap-1">
-      <input
-        class="w-100 p-inputtext-sm"
-        type="password"
-        pInputText
-        formControlName="password"
-        placeholder="Password"
-      />
-      <small
-        *ngIf="
+    <div class="flex flex-column gap-1 h-4rem">
+      <input class="w-100 p-inputtext-sm text-base" type="password" pInputText formControlName="password"
+        placeholder="Password" />
+      <small *ngIf="
           signInForm.controls['password'].invalid &&
           (signInForm.controls['password'].dirty ||
             signInForm.controls['password'].touched)
-        "
-        class="p-error"
-        >This field is required.</small
-      >
+        " class="p-error font-medium">Enter valid password in the required field</small>
     </div>
 
-    
 
-    <div class="flex gap-2 p-inputtext-sm">
+
+    <!-- <div class="flex gap-2 p-inputtext-sm">
       <p-checkbox value="New York" inputId="remember"></p-checkbox>
       <label for="remember">Remember me?</label>
+    </div> -->
+
+    <div class="flex justify-content-center mt-2">
+      <p-button styleClass="p-button-rounded  p-button-lg" class="text-base btn-lg" label="Submit" 
+      [loading]="isAPIBeingCalled" (onClick)="loginUser()"></p-button>
     </div>
 
-    <div class="block w-full justify-content-center">
-      <p-button
-        class="block w-full"
-        label="Submit"
-        [loading]="isAPIBeingCalled"
-        (onClick)="loginUser()"
-      ></p-button>
-
-      
-
-    </div>
-
-    <div class="block w-full text-center">
-      <a [routerLink]="'/auth/sign-up'">Create an account?</a>
+    <div class="text-center mt-4 mb-1">
+      <a class="no-underline text-xl font-medium" [routerLink]="'/auth/sign-up'">Create an account</a>
     </div>
   </form>
 </div>

@@ -1,39 +1,42 @@
 <div class="container flex justify-content-center align-items-center">
-  <form
-    class="flex surface-card flex-column gap-3 row p-5 border-round-lg"
-    [formGroup]="signUpForm"
-  >
+  <form class="flex surface-card flex-column gap-3 w-3 row p-5 border-round-lg h-32rem" [formGroup]="signUpForm">
+
+    <h2 class="text-red-500 hover:text-red-700 cursor-pointer text-center text-6xl mt-2 mb-3 fadein animation-duration-1000"
+      [routerLink]="'/'">
+      MeetupPK
+    </h2>
     <div>
-      <input
-        class="w-100 p-inputtext-sm"
-        type="text"
-        pInputText
-        formControlName="email"
-        placeholder="Email"
-      />
+      <h6 class="text-2xl my-1 sign">SignUp</h6>
+    </div>
+    <div class="flex flex-column gap-1 h-4rem">
+      <input class="w-100 p-inputtext-sm text-base" type="text" pInputText formControlName="email" placeholder="Email" />
+      <small *ngIf="
+          signUpForm.controls['email'].invalid &&
+          (signUpForm.controls['email'].dirty ||
+            signUpForm.controls['email'].touched)
+        " class="p-error font-medium">Enter valid email in the required field</small>
     </div>
 
-    <div>
-      <input
-        class="w-100 p-inputtext-sm"
-        type="password"
-        pInputText
-        formControlName="password"
-        placeholder="Password"
-      />
+    <div class="flex flex-column gap-1 h-4rem">
+      <input class="w-100 p-inputtext-sm text-base" type="password" pInputText formControlName="password"
+        placeholder="Password" />
+        <small *ngIf="
+          signUpForm.controls['password'].invalid &&
+          (signUpForm.controls['password'].dirty ||
+            signUpForm.controls['password'].touched)
+        " class="p-error font-medium">Enter valid password in the required field</small>
     </div>
 
-    <div class="text-center">
-      <a [routerLink]="'/auth/sign-in'">Already have an account?</a>
+   
+
+    <div class="flex justify-content-center mt-2">
+      <p-button styleClass="p-button-rounded  p-button-lg" class="btn-lg text-base" label="Submit" 
+      [loading]="isAPIBeingCalled" [disabled]="signUpForm.invalid"
+        (onClick)="createUser()"></p-button>
     </div>
 
-    <div class="card flex justify-content-center">
-      <p-button
-        label="Submit"
-        [loading]="isAPIBeingCalled"
-        [disabled]="signUpForm.invalid"
-        (onClick)="createUser()"
-      ></p-button>
+    <div class="text-center mt-4 mb-1">
+      <a class="no-underline text-xl font-medium" [routerLink]="'/auth/sign-in'">Already have an account?</a>
     </div>
   </form>
 </div>
