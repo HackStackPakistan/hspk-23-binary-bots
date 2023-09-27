@@ -14,7 +14,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
 import { NgIf } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 import { FirebaseError } from '@angular/fire/app';
@@ -55,6 +55,7 @@ export class SignUpComponent {
 
   authService = inject(AuthService);
   toastService = inject(MessageService);
+  router = inject(Router);
 
   async createUser() {
     try {
@@ -80,6 +81,7 @@ export class SignUpComponent {
           }));
 
           localStorage.setItem("accessToken", accessToken);
+          this.router.navigate(['/get-started']);
         }
       }
     } catch (error: FirebaseError | unknown) {
