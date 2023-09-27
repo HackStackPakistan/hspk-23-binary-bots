@@ -14,7 +14,7 @@ import { MessageService } from 'primeng/api';
 
 import { NgIf } from '@angular/common';
 
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 import { FirebaseError } from '@angular/fire/app';
@@ -54,6 +54,7 @@ export class SignInComponent {
 
   authService = inject(AuthService);
   toastService = inject(MessageService);
+  router=inject(Router);
 
   async loginUser() {
     try {
@@ -76,6 +77,7 @@ export class SignInComponent {
         }));
 
         localStorage.setItem("accessToken", accessToken);
+        this.router.navigate(['/']);
       }
     } catch (error: FirebaseError | unknown) {
       if (error instanceof FirebaseError) {

@@ -1,8 +1,11 @@
 <div class="container flex justify-content-center align-items-center">
   <form
-    class="flex surface-card flex-column gap-3 row p-5 border-round-lg"
+    class="flex surface-card flex-column gap-3 w-50 row p-5 border-round-lg"
     [formGroup]="signInForm"
   >
+  <div class="flex flex-column gap-2">
+
+  </div>
     <div class="flex flex-column gap-1">
       <input
         class="w-100 p-inputtext-sm"
@@ -41,24 +44,30 @@
       >
     </div>
 
-    <div class="text-center">
-        <a [routerLink]="'/auth/sign-up'">Wanna create an account?</a>
-    </div>
+    
 
     <div class="flex gap-2 p-inputtext-sm">
       <p-checkbox value="New York" inputId="remember"></p-checkbox>
       <label for="remember">Remember me?</label>
     </div>
 
-    <div class="w-100 flex justify-content-center">
+    <div class="block w-full justify-content-center">
       <p-button
-        class="w-100"
+        class="block w-full"
         label="Submit"
         [loading]="isAPIBeingCalled"
         (onClick)="loginUser()"
       ></p-button>
+
+      
+
+    </div>
+
+    <div class="block w-full text-center">
+      <a [routerLink]="'/auth/sign-up'">Create an account?</a>
     </div>
   </form>
 </div>
+
 
 <p-toast [life]="10000"></p-toast>

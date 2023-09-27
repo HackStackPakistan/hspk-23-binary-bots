@@ -9,11 +9,12 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    
   },
   {
     path: 'get-started',
-    loadChildren: () => import('./get-started/get-started.module').then(m => m.GetStartedModule)
+    loadChildren: () => import('./get-started/get-started.module').then(m => m.GetStartedModule),
   }
 ];
 
