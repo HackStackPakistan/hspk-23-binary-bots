@@ -3,9 +3,9 @@ import {
   Auth,
   createUserWithEmailAndPassword,
   fetchSignInMethodsForEmail,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -13,15 +13,18 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private auth: Auth) { }
 
-  router = inject(Router);
+  public isAuthenicated:boolean=false;
 
-
+  
   checkStatus(): boolean {
     
+    
     if (localStorage.getItem("accessToken") && localStorage.getItem("userInfo")) {
+      this.isAuthenicated=true;
       return true;
     }
     else {
+      this.isAuthenicated=false;
       return false;
     }
   }
@@ -40,6 +43,11 @@ export class AuthService {
       email,
       password
     );
+  }
+
+  async signoutUser(){
+    localStorage.clear();
+    return await signOut(this.auth)
   }
 
   async loginUser(email: string, password: string) {

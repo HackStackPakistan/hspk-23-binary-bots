@@ -20,6 +20,7 @@ import { AuthService } from '../services/auth.service';
 import { FirebaseError } from '@angular/fire/app';
 import { ToastModule } from 'primeng/toast';
 
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -56,6 +57,13 @@ export class SignInComponent {
   toastService = inject(MessageService);
   router=inject(Router);
 
+  onKeyDown($event: string){
+    if($event==="Enter"){
+      return this.loginUser();
+    }
+    return;
+  }
+  
   async loginUser() {
     try {
       this.isAPIBeingCalled = true;

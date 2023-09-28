@@ -15,7 +15,8 @@ const routes: Routes = [
   {
     path: 'get-started',
     loadChildren: () => import('./get-started/get-started.module').then(m => m.GetStartedModule),
-  }
+  },
+
 ];
 
 @NgModule({

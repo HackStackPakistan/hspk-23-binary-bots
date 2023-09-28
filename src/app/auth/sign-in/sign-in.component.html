@@ -1,9 +1,9 @@
 <div class="container flex justify-content-center align-items-center">
-  <form class="flex surface-card flex-column gap-3 w-3 row p-5 border-round-lg h-32rem" [formGroup]="signInForm" keydown.enter="createUser()">
+  <form class="flex surface-card flex-column gap-3 w-3 row p-5 border-round-lg h-32rem" [formGroup]="signInForm"  (keydown)="onKeyDown($event.key)">
     <div class="flex flex-column gap-4">
-      <h2
-        class="text-red-500 hover:text-red-700 cursor-pointer text-center text-6xl mt-2 mb-3 fadein animation-duration-1000"
-        [routerLink]="'/'">MeetupPK</h2>
+      <h2 class="text-center">
+        <a [routerLink]="'/'" class="no-underline text-red-500 hover:text-red-700 text-4xl cursor-pointer mt-2 mb-3 fadein animation-duration-1000"> MeetupPK</a>
+      </h2>
     </div>
     <div>
       <h3 class="text-2xl my-1 sign">SignIn</h3>

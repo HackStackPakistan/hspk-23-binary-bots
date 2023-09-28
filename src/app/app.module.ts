@@ -9,17 +9,22 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NavbarComponent } from './home/components/navbar/navbar.component';
+import { ButtonModule } from 'primeng/button';
+import { SidepanelComponent } from './home/components/sidepanel/sidepanel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    
+    
+    // SidepanelComponents
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    ButtonModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
