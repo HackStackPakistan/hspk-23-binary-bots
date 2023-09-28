@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authguardGuard } from '../shared/authguard.guard';
 
 const routes: Routes = [
   {
     path: "",
     loadComponent: () => import("./get-started.component").then(m => m.GetStartedComponent),
+    canActivate: [authguardGuard],
     children: [
       {
         path: '',
@@ -17,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: "*",
-    redirectTo: "get-started/personal-info"
+    redirectTo: "/"
   }
 ];
 
