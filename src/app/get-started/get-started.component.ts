@@ -4,6 +4,7 @@ import { StepsModule } from 'primeng/steps';
 import { GetStartedService } from './services/get-started.service';
 import { Subject, takeUntil } from 'rxjs';
 import { Route, Router } from '@angular/router';
+import { NavbarComponent } from '../home/components/navbar/navbar.component';
 
 interface StepsIndex {
   items: MenuItem[];
@@ -15,7 +16,7 @@ interface StepsIndex {
   templateUrl: './get-started.component.html',
   styleUrls: ['./get-started.component.scss'],
   standalone: true,
-  imports: [StepsModule],
+  imports: [StepsModule,NavbarComponent],
 })
 export class GetStartedComponent implements OnInit, OnDestroy {
   items: MenuItem[] | undefined;

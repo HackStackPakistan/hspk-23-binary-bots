@@ -57,6 +57,14 @@ export class SignUpComponent {
   toastService = inject(MessageService);
   router = inject(Router);
 
+
+  onKeyDown($event: string){
+    if($event==="Enter"){
+      return this.createUser();
+    }
+    return;
+  }
+
   async createUser() {
     try {
       this.isAPIBeingCalled = true;
