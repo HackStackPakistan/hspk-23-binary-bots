@@ -7,14 +7,7 @@ export const authguardGuard: CanActivateFn = (route, state) => {
   const auth = inject(AuthService)
   const router = inject(Router);
 
-  console.log("Guard", auth.checkStatus());
-
   const param = state.url.slice(1, 5) === "auth";
-
-  if (param && auth.checkStatus()) {
-    router.navigate(["/"])
-    return false;
-  }
 
   if (param && !auth.checkStatus()) {
     return true;
@@ -24,6 +17,7 @@ export const authguardGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
+  router.navigate(["/"])
   return false;
 
 };
