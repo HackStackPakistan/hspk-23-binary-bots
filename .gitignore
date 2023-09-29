@@ -37,7 +37,7 @@ yarn-error.log
 testem.log
 /typings
 .env
-/src/environments
+
 
 # System files
 .DS_Store
@@ -47,10 +47,3 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
-
-#dotenv
-.env
-
-# Environment
-environment.development.ts
-environment.ts

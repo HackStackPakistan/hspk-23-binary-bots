@@ -1,0 +1,108 @@
+<app-navbar class="nav justify-content-center flex"></app-navbar>
+
+<div class="stepsdemo-content p-4">
+    <p-card>
+      <ng-template pTemplate="title"> Event Information </ng-template>
+      <ng-template pTemplate="subtitle">
+        Enter your event information
+      </ng-template>
+      <ng-template pTemplate="content">
+        <form [formGroup]="eventFormGroup" class="p-fluid">
+          <div class="field">
+            <label for="title">Title</label>
+            <input
+              id="title"
+              type="text"
+              required
+              pInputText
+              formControlName="title"
+            />
+            <small
+              *ngIf="(eventFormGroup.controls['title'].invalid &&
+                eventFormGroup.controls['title'].dirty) ||(eventFormGroup.controls['title'].touched)"
+              class="p-error"
+              >{{ getErrorMessages('title') }}</small
+            >
+          </div>
+
+          <div class="field">
+            <label for="description">Description</label>
+            <textarea id="description" rows="5" cols="30" pInputTextarea formControlName="description" placeholder="You gotta write atleast 50 words!"></textarea>
+            <small
+              *ngIf="
+              eventFormGroup.controls['description'].invalid &&
+                (eventFormGroup.controls['description'].dirty ||
+                eventFormGroup.controls['description'].touched)
+              "
+              class="p-error"
+              >{{ getErrorMessages('description') }}</small
+            >
+          </div>
+  
+          <div class="field">
+            <label for="age">Age</label>
+            <p-inputNumber id="age" inputId="age" formControlName="age"> </p-inputNumber>
+  
+            <small
+              *ngIf="
+              eventFormGroup.controls['age'].invalid &&
+                (eventFormGroup.controls['age'].dirty ||
+                eventFormGroup.controls['age'].touched)
+              "
+              class="p-error"
+              >{{ getErrorMessages('age') }}
+            </small>
+          </div>
+
+
+          
+  
+
+          <div class="field">
+            <label for="timeNDate">Time and Date</label>
+            <p-calendar id="timeNDate" formControlName="timeNDate"[showTime]="true" [minDate]="currentDate" [hourFormat]="'12'"></p-calendar>
+          </div>
+
+          <div class="field">
+            <label for="interests">Interests</label>
+            <p-dropdown id="interests" [options]="interests" formControlName="interests" optionLabel="label" optionValue="value" placeholder="Interests"></p-dropdown>
+          </div>
+  
+          <div class="field">
+            <label for="location">Location</label>
+            <input
+              id="location"
+              type="text"
+              required
+              pInputText
+              formControlName="location"
+            />
+            <small
+              *ngIf="(eventFormGroup.controls['location'].invalid &&
+                eventFormGroup.controls['location'].dirty) ||(eventFormGroup.controls['location'].touched)"
+              class="p-error"
+              >{{ getErrorMessages('location') }}</small
+            >
+          </div>
+
+          <div class="field">
+            <label for="cities">City</label>
+            <p-dropdown id="cities" [options]="cities" formControlName="cities" optionLabel="label" optionValue="value" placeholder="City"></p-dropdown>
+          </div>
+
+        </form>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <div class="grid grid-nogutter justify-content-end">
+          <p-button
+            label="Create Event"
+            (onClick)="nextPage()"
+            [disabled]="!eventFormGroup.valid"
+            [loading]="isAPIBeingCalled"
+          ></p-button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+  
+  <p-toast [life]="5000"></p-toast>

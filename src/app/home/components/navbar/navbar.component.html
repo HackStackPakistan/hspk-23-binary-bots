@@ -3,12 +3,15 @@
     <div>
         <div class="sticky flex font-bold bg-primary p-4 justify-content-evenly align-items-center" style="top: 25px;">
             <h2 class="text-center">
-                <a [routerLink]="'/'" class="no-underline text-red-500 hover:text-red-700 text-4xl cursor-pointer mt-2 mb-3 fadein animation-duration-1000"> MeetupPK</a>
+                <a [routerLink]="'/'" class="no-underline text-green-600 hover:text-green-900 text-4xl cursor-pointer mt-2 mb-3 fadein animation-duration-1000"> Meetup Pak</a>
               </h2>
 
-            <p-button *ngIf="isAuthenicated" label="Sign Out"
-                styleClass="bg-indigo-900 text-color-secondary p-button-rounded p-button-danger p-button-raised p-button-md"
-                class="nav-btn text-base" (onClick)="signOutbtn()"></p-button>
+
+           
+             <div *ngIf="username"><a [routerLink]="'/user'" class="no-underline text-green-600 hover:text-green-900 text-4xl cursor-pointer mt-2 mb-3 fadein animation-duration-1000">{{username}}</a></div>   
+             <p-button *ngIf="isAuthenicated" label="Sign Out"
+             styleClass="bg-indigo-900 text-color-secondary p-button-rounded p-button-danger p-button-raised p-button-md"
+             class="nav-btn text-base" (onClick)="signOutbtn()"></p-button>
         </div>
 
     </div>

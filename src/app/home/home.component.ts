@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidepanelComponent } from './components/sidepanel/sidepanel.component';
+import { EventsComponent } from './components/events/events.component';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   styleUrls: ['./home.component.scss'],
   standalone:true,
   imports:[
-    NavbarComponent
+    NavbarComponent,
+    SidepanelComponent,
+    EventsComponent
   ]
 })
 export class HomeComponent {

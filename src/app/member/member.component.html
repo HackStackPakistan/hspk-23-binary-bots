@@ -1,0 +1,25 @@
+<div class="w-full h-screen">
+    <div class="flex flex-column align-items-center justify-content-center gap-3">
+        <h1 class="mb-0">Team BinaryBots</h1>
+        
+        <h2>Mentors</h2>
+        <div class="flex flex-wrap">
+            <div class="gap-3 flex flex-column justify-content-center align-items-center" *ngFor="let mentor of mentors">
+                <a target="_blank"><img src={{mentor.image}} alt=""></a>
+                <button class="cursor-pointer w-8 text-white border-round-2xl border-yellow-500 hover:bg-yellow-500 hover:text-black-alpha-90 border-x-2 text-base font-bold surface-section"
+                style="padding: 15px 30px ;">{{mentor.name}}</button>
+            </div>
+        </div>
+        <h2>Members</h2>
+        <div class="flex flex-wrap justify-content-center gap-3 pb-5">
+            <div class="flex flex-column justify-content-center align-items-center gap-4" *ngFor="let member of members">
+                <a href={{member.githubUrl}} target="_blank"><img src={{member.image}} alt=""></a>
+                <button class="cursor-pointer w-8 text-white border-round-2xl border-yellow-500 hover:bg-yellow-500 hover:text-black-alpha-90 border-x-2 text-base font-bold surface-section"
+                style="padding: 15px 30px ;"
+                 (click)="redirectTo(member.githubUrl)">{{member.name}}</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

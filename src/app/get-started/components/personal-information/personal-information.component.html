@@ -28,7 +28,7 @@
 
         <div class="field">
           <label for="age">Age</label>
-          <p-inputNumber inputId="age" formControlName="age"> </p-inputNumber>
+          <p-inputNumber id="age" inputId="age" formControlName="age"> </p-inputNumber>
 
           <small
             *ngIf="
@@ -48,7 +48,7 @@
 
         <div class="field">
           <label for="gender">About</label>
-          <textarea rows="5" cols="30" pInputTextarea formControlName="biography" placeholder="You gotta write atleast 50 words!"></textarea>
+          <textarea id="gender" rows="5" cols="30" pInputTextarea formControlName="biography" placeholder="You gotta write atleast 50 words!"></textarea>
           <small
             *ngIf="
               personalInfoFormGroup.controls['biography'].invalid &&
@@ -64,7 +64,7 @@
     <ng-template pTemplate="footer">
       <div class="grid grid-nogutter justify-content-end">
         <p-button
-          label="Next"
+          label="Update"
           (onClick)="nextPage()"
           [disabled]="!personalInfoFormGroup.valid"
           [loading]="isAPIBeingCalled"

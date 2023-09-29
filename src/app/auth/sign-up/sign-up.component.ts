@@ -106,7 +106,9 @@ export class SignUpComponent {
         }
       }
     } finally {
-      this.isAPIBeingCalled = false;
+      this.authService.signoutUser();
+      this.authService.isAPIBeingCalled = false;
+      this.router.navigate(['/not-found']);
     }
   }
 }

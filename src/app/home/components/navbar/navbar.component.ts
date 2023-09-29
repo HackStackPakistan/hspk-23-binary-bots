@@ -1,8 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { Router, RouterModule, RouteReuseStrategy } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { UserdataService } from '../../services/userdata.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,14 +19,17 @@ import { CommonModule } from '@angular/common';
 export class NavbarComponent implements OnInit {
 
   isAuthenicated: boolean = false;
+  username:string | undefined;
 
   auth = inject(AuthService);
   router = inject(Router);
-  route = inject(RouteReuseStrategy);
+  user = inject(UserdataService);
 
-  ngOnInit() {
+  async ngOnInit() {
 
     this.isAuthenicated = this.auth.checkStatus();
+    const user=await this.user.getData()
+    this.username=user?.['name'];
   }
 
 
