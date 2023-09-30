@@ -14,7 +14,9 @@ import {APP_BASE_HREF} from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+
     // SidepanelComponents
   ],
   imports: [
@@ -26,7 +28,7 @@ import {APP_BASE_HREF} from '@angular/common';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
-  providers: [[{provide: APP_BASE_HREF, useValue: 'https://rajputusman.github.io/hspk-23-binary-bots/'}]],
+  providers: [[]],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

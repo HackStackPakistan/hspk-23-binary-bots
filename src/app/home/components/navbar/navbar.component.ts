@@ -35,28 +35,52 @@ export class NavbarComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.items = [
-      {
-        label: 'Back',
-        icon: 'pi pi-fw pi-angle-left',
-        command:()=>this.backStep()
-      },
-      {
-        label: 'Create Event',
-        icon: 'pi pi-fw pi-calendar',
-        command:()=>{this.router.navigate(['/event'])}
-      },
-      {
-        label: 'Team Information',
-        icon: 'pi pi-fw pi-users',
-        command:()=>{this.router.navigate(['/members'])}
-      },
-      {
-        label: 'Sign Out',
-        icon: 'pi pi-fw pi-power-off',
-        command:()=>this.signOutbtn()
-      },
-    ];
+    if(this.isAuthenicated){
+      this.items = [
+        {
+          label: 'Back',
+          icon: 'pi pi-fw pi-angle-left',
+          command:()=>this.backStep()
+        },
+        {
+          label: 'Create Event',
+          icon: 'pi pi-fw pi-calendar',
+          command:()=>{this.router.navigate(['/event'])}
+        },
+        {
+          label: 'Team Information',
+          icon: 'pi pi-fw pi-users',
+          command:()=>{this.router.navigate(['/members'])}
+        },
+        
+          {
+            label: 'Sign Out',
+            icon: 'pi pi-fw pi-power-off',
+            command:()=>this.signOutbtn()
+          },
+        
+      ];
+    }else{
+      this.items = [
+        {
+          label: 'Back',
+          icon: 'pi pi-fw pi-angle-left',
+          command:()=>this.backStep()
+        },
+        {
+          label: 'Team Information',
+          icon: 'pi pi-fw pi-users',
+          command:()=>{this.router.navigate(['/members'])}
+        },
+        
+        {
+          label: 'Sign In',
+          icon: 'pi pi-fw pi-sign-in',
+          command:()=>{this.router.navigate(['/auth/sign-in'])}
+        },
+      ];
+    }
+    
 
     this.isAuthenicated = this.auth.checkStatus();
     const user=await this.user.getData()
