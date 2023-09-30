@@ -1,19 +1,23 @@
-<div class="overflow-auto flex-column"  style="height: 80vh;">
-<div class="px-3 flex flex-column-reverse">
-    <div class="mb-4" *ngFor="let data of dataLists">
-        <p-card header="Event" subheader="{{data.title}}">
-            <p>{{data.description}}</p>
-            <p>{{data.cities}}</p>
-            <p>{{data.interests}}</p>
-            <p>{{data.location}}</p>
-            <p>{{data.time}}</p>
-            <p>{{data.date}}</p>
-            <ng-template pTemplate="footer">
+<div class="overflow-auto flex-column" style="height: 80vh;">
+    <div class="px-3 flex-column-reverse">
+        <div class="mb-4" *ngFor="let data of dataLists">
+            <p-card header="Event" subheader="{{data.title}}">
+                <h4>Description</h4>
+                <p>{{data.description}}</p>
+                <h5>City</h5>
+                <p>{{data.cities}}</p>
+                <h5>Interests</h5>
+                <p>{{data.interests}}</p>
+                <h5>Location</h5>
+                <p>{{data.location}}</p>
+                <h5>Date and Time</h5>
+                <p>{{data.time}} {{data.date}}</p>
+                <ng-template pTemplate="footer">
 
-                <p-button *ngIf="data.owner" label="Delete" icon="pi pi-times" styleClass="p-button-warning"
-                    (onClick)="deleteDoc(data.id)" [style]="{ 'margin-left': '.5em' }"></p-button>
-            </ng-template>
-        </p-card>
+                    <p-button *ngIf="data.owner" label="Delete" icon="pi pi-times" styleClass="p-button-warning"
+                        (onClick)="deleteDoc(data.id)" [style]="{ 'margin-left': '.5em' }"></p-button>
+                </ng-template>
+            </p-card>
+        </div>
     </div>
-</div>
 </div>
