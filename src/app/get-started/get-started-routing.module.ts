@@ -17,8 +17,8 @@ const routes: Routes = [
     ],
   },
   {
-    path: "*",
-    redirectTo: "'/'"
+    path: "**",
+    redirectTo: "get-started/personal-info"
   }
 ];
 

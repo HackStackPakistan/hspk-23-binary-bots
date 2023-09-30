@@ -42,6 +42,15 @@ For build directory go to the project directory\dist
 ```bash
   cd hspk-23-binary-bots\dist
 ```
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  npm run deploy
+```
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file. Initialize Firebase configuration and begin using the SDKs for the Meetup Pak web app.

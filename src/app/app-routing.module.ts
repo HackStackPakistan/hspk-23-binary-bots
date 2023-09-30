@@ -22,13 +22,12 @@ const routes: Routes = [
     
     path: 'members',
     loadChildren: () => import("./member/member.module").then(m => m.MemberModule),
-    pathMatch:"full",
+    
   },
   {
     
     path: 'get-started',
     loadChildren: () => import('./get-started/get-started.module').then(m => m.GetStartedModule),
-    pathMatch:"full",
   },
 
   {
