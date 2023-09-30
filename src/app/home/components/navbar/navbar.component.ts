@@ -34,7 +34,10 @@ export class NavbarComponent implements OnInit {
    return this.loc.back()
   }
 
+  
+
   async ngOnInit() {
+    this.isAuthenicated = this.auth.checkStatus();
     if(this.isAuthenicated){
       this.items = [
         {
@@ -82,7 +85,7 @@ export class NavbarComponent implements OnInit {
     }
     
 
-    this.isAuthenicated = this.auth.checkStatus();
+    
     const user=await this.user.getData()
     this.username=user?.['name'];
   }
