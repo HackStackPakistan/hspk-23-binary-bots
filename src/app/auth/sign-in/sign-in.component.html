@@ -1,5 +1,5 @@
 <div class="container flex justify-content-center align-items-center">
-  <form class="flex surface-card flex-column gap-3 w-3 row p-5 border-round-lg h-32rem" [formGroup]="signInForm"  (keydown)="onKeyDown($event.key)">
+  <form class="flex surface-card flex-column gap-3 xl:w-6 md:w-6 sm:w-5 row p-5 border-round-lg h-32rem" [formGroup]="signInForm"  (keydown)="onKeyDown($event.key)">
     <div class="flex flex-column gap-4">
       <h2 class="text-center">
         <a [routerLink]="'/'" class="no-underline text-red-500 hover:text-red-700 text-4xl cursor-pointer mt-2 mb-3 fadein animation-duration-1000"> Meetup Pak</a>
@@ -28,14 +28,8 @@
     </div>
 
 
-
-    <!-- <div class="flex gap-2 p-inputtext-sm">
-      <p-checkbox value="New York" inputId="remember"></p-checkbox>
-      <label for="remember">Remember me?</label>
-    </div> -->
-
     <div class="flex justify-content-center mt-2">
-      <p-button styleClass="p-button-rounded  p-button-lg" class="text-base btn-lg" label="Submit" 
+      <p-button styleClass="p-button-rounded  p-button-lg" class="text-base" label="Submit" 
       [loading]="isAPIBeingCalled" (onClick)="loginUser()"></p-button>
     </div>
 
