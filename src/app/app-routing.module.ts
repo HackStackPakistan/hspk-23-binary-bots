@@ -1,21 +1,44 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path:"",
-    component:HomeComponent
+    loadComponent:()=>import('./home/home.component').then(m=>m.HomeComponent)
   },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     
   },
+
   {
+    path: 'not-found',
+    loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundModule),
+    pathMatch:"full"
+  },
+
+  {
+    
+    path: 'members',
+    loadChildren: () => import("./member/member.module").then(m => m.MemberModule),
+    pathMatch:"full",
+  },
+  {
+    
     path: 'get-started',
     loadChildren: () => import('./get-started/get-started.module').then(m => m.GetStartedModule),
+    pathMatch:"full",
   },
+
+  {
+    path: 'event',
+    loadChildren: () => import('./event/event.module').then(m => m.EventModule),
+  },
+  {
+    path: "**",
+    redirectTo: "/"
+  }
 
 ];
 

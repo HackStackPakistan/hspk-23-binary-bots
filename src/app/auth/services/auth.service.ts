@@ -14,6 +14,8 @@ export class AuthService {
   constructor(private auth: Auth) { }
 
   public isAuthenicated:boolean=false;
+  public isAPIBeingCalled:boolean=true;
+  
 
   
   checkStatus(): boolean {

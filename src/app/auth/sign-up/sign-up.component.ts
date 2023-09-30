@@ -105,8 +105,12 @@ export class SignUpComponent {
             this.toastService.add({ severity: 'error', summary: 'Error', detail: "Password entered wasn't strong enough!" });
         }
       }
+
+      
+      this.authService.isAPIBeingCalled = false;
+      this.router.navigate(['/not-found']);
     } finally {
-      this.isAPIBeingCalled = false;
+      this.router.navigate(['/']);
     }
   }
 }

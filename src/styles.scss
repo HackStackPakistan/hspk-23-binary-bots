@@ -1,4 +1,6 @@
 @import "primeng/resources/themes/mdc-dark-indigo/theme.css";
+@import "primeicons/primeicons.css";
+
 
 html {
     font-size: 14px;
@@ -8,6 +10,8 @@ body {
     font-family: var(--font-family);
     margin: 0px;
     padding: 0px;
+    width: 100%;
+    height: 100vh;
 }
 
 .card {
@@ -17,19 +21,45 @@ body {
     margin-bottom: 1rem;
 }
 
-.btn-lg span{
+.btn-lg span {
     padding: 0 25px !important;
 }
 
-.sign{
-    color:#D0ADF0;
+.sign {
+    color: #D0ADF0;
 }
 
-.nav{
-}
+.nav {}
 
-.nav-btn button span{
+.nav-btn button span {
     padding: 3px 25px;
-    font-size:medium;
-    
+    font-size: medium;
+
+}
+
+.bg-pur {
+    background-color: #9D76C1
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #fff;
+    border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;
 }

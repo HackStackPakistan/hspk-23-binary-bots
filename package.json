@@ -5,10 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "predeploy": "ng deploy --base-href=https://RajputUsman/hspk-23-binary-bots/",
+    "deploy": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "predeploy": "ng deploy --base-href=https://HackStackPakistan.github.io/hspk-23-binary-bots/",
-    "deploy": "ng build"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "primeicons": "^6.0.1",
     "primeng": "^16.3.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

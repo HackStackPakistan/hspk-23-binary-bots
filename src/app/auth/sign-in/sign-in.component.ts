@@ -120,8 +120,12 @@ export class SignInComponent {
             break;
         }
       }
+      
+      this.authService.isAPIBeingCalled = false;
+      this.router.navigate(['/not-found']);
     } finally {
-      this.isAPIBeingCalled = false;
+      
+      this.router.navigate(['/']);
     }
   }
 }

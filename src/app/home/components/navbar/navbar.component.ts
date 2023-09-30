@@ -1,8 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { Router, RouterModule, RouteReuseStrategy } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
+import { UserdataService } from '../../services/userdata.service';
+import { MenuItem } from 'primeng/api';
+import { MenubarModule } from 'primeng/menubar';
+
 
 @Component({
   selector: 'app-navbar',
@@ -12,31 +16,60 @@ import { CommonModule } from '@angular/common';
   imports: [
     ButtonModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    MenubarModule
   ]
 })
 export class NavbarComponent implements OnInit {
-
+  items!: MenuItem[];
   isAuthenicated: boolean = false;
+  username:string | undefined;
 
   auth = inject(AuthService);
   router = inject(Router);
-  route = inject(RouteReuseStrategy);
+  loc = inject(Location);
+  user = inject(UserdataService);
 
-  ngOnInit() {
+  backStep(){
+   return this.loc.back()
+  }
+
+  async ngOnInit() {
+    this.items = [
+      {
+        label: 'Back',
+        icon: 'pi pi-fw pi-angle-left',
+        command:()=>this.backStep()
+      },
+      {
+        label: 'Create Event',
+        icon: 'pi pi-fw pi-calendar',
+        command:()=>{this.router.navigate(['/event'])}
+      },
+      {
+        label: 'Team Information',
+        icon: 'pi pi-fw pi-users',
+        command:()=>{this.router.navigate(['/members'])}
+      },
+      {
+        label: 'Sign Out',
+        icon: 'pi pi-fw pi-power-off',
+        command:()=>this.signOutbtn()
+      },
+    ];
 
     this.isAuthenicated = this.auth.checkStatus();
+    const user=await this.user.getData()
+    this.username=user?.['name'];
   }
 
 
 
   async signOutbtn() {
-
-    this.router.navigateByUrl('/auth', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/']);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/auth']);
     });
     return await this.auth.signoutUser()
   }
-
 
 }
