@@ -11,6 +11,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { GetStartedService } from '../../services/get-started.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal-information',
@@ -56,35 +57,37 @@ export class PersonalInformationComponent {
   getErrorMessages(key: string) {
     let message: string = '';
 
-    switch(key) {
+    switch (key) {
       case "age":
         if (this.personalInfoFormGroup.get('age')?.hasError('min')) message = "You're quite young for meetups, aren't you?";
         if (this.personalInfoFormGroup.get('age')?.hasError('max')) message = "You're waaaay too old for meetups.";
         if (!this.personalInfoFormGroup.get('age')?.value) message = "This field is required";
-      break;
+        break;
       case "name":
         if (!this.personalInfoFormGroup.get('name')?.value) message = "This field is required";
-      break;
+        break;
       case "biography":
         if (!this.personalInfoFormGroup.get('biography')?.value) message = "This field is required";
-      break;
+        break;
     }
 
     return message;
   }
+  router = inject(Router);
 
   async nextPage() {
     try {
       this.isAPIBeingCalled = true;
 
       await this.getStartedService.setPersonalInfo(this.personalInfoFormGroup.value);
-    } catch(error) {
+    } catch (error) {
       this.toastService.add({
         severity: 'error',
         summary: 'Error',
         detail: "Something went wrong while trying to update the profile!",
       });
     } finally {
+      this.router.navigate(['/']);
       this.isAPIBeingCalled = false;
     }
   }

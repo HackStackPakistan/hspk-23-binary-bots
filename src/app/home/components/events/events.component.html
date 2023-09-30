@@ -1,29 +1,19 @@
-<div class="overflow-y-scroll pr-3" style="height: 80vh;">
-    <div style=" height: 300px;" class="bg-primary  border-round-3xl mb-4">
-        <img src="" alt="">
-        <p>events works!</p>
-        <button (click)="getEvents()">Check</button>
-        <div>
-            <h5>Event1:</h5>
-            <p>Event Name</p>
-        </div>
-    </div>
-    <div style=" height: 300px;" class="bg-primary  border-round-3xl mb-4">
-        <img src="" alt="">
-        <p>events works!</p>
-        <div>
-            <h5>Event1:</h5>
-            <p>Event Name</p>
-        </div>
-    </div>
+<div class="overflow-auto flex-column"  style="height: 80vh;">
+<div class="px-3 flex flex-column-reverse">
+    <div class="mb-4" *ngFor="let data of dataLists">
+        <p-card header="Event" subheader="{{data.title}}">
+            <p>{{data.description}}</p>
+            <p>{{data.cities}}</p>
+            <p>{{data.interests}}</p>
+            <p>{{data.location}}</p>
+            <p>{{data.time}}</p>
+            <p>{{data.date}}</p>
+            <ng-template pTemplate="footer">
 
-    <div style=" height: 300px;" class="bg-primary  border-round-3xl mb-4">
-        <img src="" alt="">
-        <p>events works!</p>
-        <div>
-            <h5>Event1:</h5>
-            <p>Event Name</p>
-        </div>
+                <p-button *ngIf="data.owner" label="Delete" icon="pi pi-times" styleClass="p-button-warning"
+                    (onClick)="deleteDoc(data.id)" [style]="{ 'margin-left': '.5em' }"></p-button>
+            </ng-template>
+        </p-card>
     </div>
 </div>
-
+</div>

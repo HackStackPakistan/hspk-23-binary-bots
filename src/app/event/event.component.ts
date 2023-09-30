@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule,DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/api';
 import { EventService } from './services/event.service';
 import { CalendarModule } from 'primeng/calendar';
 import { NavbarComponent } from '../home/components/navbar/navbar.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -39,20 +40,17 @@ import { NavbarComponent } from '../home/components/navbar/navbar.component';
   providers: [MessageService]
 })
 export class EventComponent {
-
-
-
-  // Calendar=new Date();
+  
   currentDate=new Date();
 
   eventFormGroup: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
-    age: new FormControl(null, [Validators.required, Validators.min(18), Validators.max(55)]),
     interests: new FormControl(undefined, [Validators.required]),
     description: new FormControl('', [Validators.required, Validators.min(50)]),
     location: new FormControl('', [Validators.required]),
     cities: new FormControl(undefined, [Validators.required]),
-    timeNDate:new FormControl('', [Validators.required]),
+    timeNDate: new FormControl('', [Validators.required]),
+    dateOfcreation:new FormControl(new Date())
   });
 
   interests: { label: string; value: string }[] = [
@@ -65,7 +63,7 @@ export class EventComponent {
     { label: 'Others', value: 'others' }
   ]
 
-  
+
 
   cities: { label: string; value: string }[] = [
 
@@ -318,11 +316,6 @@ export class EventComponent {
     let message: string = '';
 
     switch (key) {
-      case "age":
-        if (this.eventFormGroup.get('age')?.hasError('min')) message = "You're quite young for meetups, aren't you?";
-        if (this.eventFormGroup.get('age')?.hasError('max')) message = "You're waaaay too old for meetups.";
-        if (!this.eventFormGroup.get('age')?.value) message = "This field is required";
-        break;
       case "title":
         if (!this.eventFormGroup.get('title')?.value) message = "Fill the title field is required";
         break;
@@ -332,18 +325,19 @@ export class EventComponent {
       case "description":
         if (!this.eventFormGroup.get('description')?.value) message = "Description field is required";
         break;
-        case "timeNDate":
-          if (!this.eventFormGroup.get('timeNDate')?.value) message = "Time and Date field is required";
-          break;
+      case "timeNDate":
+        if (!this.eventFormGroup.get('timeNDate')?.value) message = "Time and Date field is required";
+        break;
     }
 
     return message;
   }
 
+  router = inject(Router);
+
   async nextPage() {
     try {
       this.isAPIBeingCalled = true;
-console.log(this.eventFormGroup.value);
       await this.eventService.setEventInfo(this.eventFormGroup.value);
     } catch (error) {
       this.toastService.add({
@@ -353,6 +347,7 @@ console.log(this.eventFormGroup.value);
       });
     } finally {
       this.isAPIBeingCalled = false;
+      this.router.navigate(['/']);
     }
   }
 }

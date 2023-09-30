@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore,doc,onSnapshot,getDoc,getDocs,collection } from '@angular/fire/firestore';
+import { Firestore, doc, deleteDoc, getDoc, getDocs, collection, DocumentData, orderBy } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
 
 @Injectable({
@@ -11,30 +11,50 @@ export class UserdataService {
     private auth: Auth,
     private db: Firestore,
     private fs: Firestore
-  ) {}
+  ) { }
 
-  async getData(){
-    
-    const local:string|null=localStorage.getItem("userInfo");
-    if(local==null)return;
-    const uid=JSON.parse(local).uid;
-    const userRef=doc(this.db, "users",uid);
-  
-  const docSnap = await getDoc(userRef);
-  const data=await docSnap.data()
-  return data;
-  
+  getid(){
+    const local: string | null = localStorage.getItem("userInfo");
+    if (local == null) return;
+    const uid = JSON.parse(local).uid;
+    return uid;
   }
 
-  async getEvent(){
+  async getData() {
 
-    console.log("trigger");
+    try{
+
+    }catch(e){
+
+    }
+    
+    const uid=this.getid();
+    const userRef = doc(this.db, "users", uid);
+
+    const docSnap = await getDoc(userRef);
+    const data =  docSnap.data()
+    return data;
+
+  }
+
+  async getEvents() {
+
+
+    const docs: DocumentData[]=[];
+    
     const querySnapshot = await getDocs(collection(this.db, "events"));
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  console.log(doc.id, " => ", doc.data());
-});
+    const gen = querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      data['id']=doc.id
+      docs.push(data);
+      return data;
+    });
 
+    return docs;
+  }
+
+  async deleteEvent(id:string){
+    await deleteDoc(doc(this.db, "events", id));
   }
 
 

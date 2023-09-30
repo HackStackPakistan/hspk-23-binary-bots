@@ -11,12 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
     
   },
- 
-  {
-    path: 'user',
-    loadChildren: () => import('./get-started/get-started.module').then(m => m.GetStartedModule),
-    pathMatch:"full"
-  },
+
   {
     path: 'not-found',
     loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundModule),
@@ -41,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./event/event.module').then(m => m.EventModule),
   },
   {
-    path: "*",
+    path: "**",
     redirectTo: "/"
   }
 

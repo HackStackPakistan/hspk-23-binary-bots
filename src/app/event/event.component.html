@@ -37,25 +37,7 @@
               class="p-error"
               >{{ getErrorMessages('description') }}</small
             >
-          </div>
-  
-          <div class="field">
-            <label for="age">Age</label>
-            <p-inputNumber id="age" inputId="age" formControlName="age"> </p-inputNumber>
-  
-            <small
-              *ngIf="
-              eventFormGroup.controls['age'].invalid &&
-                (eventFormGroup.controls['age'].dirty ||
-                eventFormGroup.controls['age'].touched)
-              "
-              class="p-error"
-              >{{ getErrorMessages('age') }}
-            </small>
-          </div>
-
-
-          
+          </div>        
   
 
           <div class="field">

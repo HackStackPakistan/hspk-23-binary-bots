@@ -14,12 +14,11 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       { path: 'personal-info', loadComponent: () => import('./components/personal-information/personal-information.component').then(m => m.PersonalInformationComponent) },
-    
     ],
   },
   {
     path: "*",
-    redirectTo: "/"
+    redirectTo: "'/'"
   }
 ];
 

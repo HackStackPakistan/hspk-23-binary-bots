@@ -8,12 +8,13 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
+import {APP_BASE_HREF} from '@angular/common';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-
-
+    AppComponent
     // SidepanelComponents
   ],
   imports: [
@@ -25,7 +26,7 @@ import { ButtonModule } from 'primeng/button';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
-  providers: [],
+  providers: [[{provide: APP_BASE_HREF, useValue: 'https://rajputusman.github.io/hspk-23-binary-bots/'}]],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -107,7 +107,7 @@
           }
         },
         "deploy": {
-          "builder": "@angular/fire:deploy",
+          "builder": "angular-cli-ghpages:deploy",
           "options": {
             "version": 2,
             "browserTarget": "hspk-23-binary-bots:build:production"

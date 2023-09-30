@@ -1,4 +1,4 @@
-<div class="overflow-auto border-round-3xl border-1 border-primary-500 my-3 justify-content-center"
+<!-- <div class="overflow-auto border-round-3xl border-1 border-primary-500 my-3 justify-content-center"
     style=" width: 98%;">
     <div>
         <div class="sticky flex font-bold bg-primary p-4 justify-content-evenly align-items-center" style="top: 25px;">
@@ -15,4 +15,24 @@
         </div>
 
     </div>
+</div> -->
+<div style="width: 98%;" class="my-3 justify-content-center">
+    <p-menubar class=" border-round  border-primary-500 " [model]="items">
+        <ng-template pTemplate="start">
+           <a routerLink="'/'"> <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" /></a>
+        </ng-template>
+
+        <ng-template pTemplate="end">
+            <div *ngIf="username" class="align-items-center flex gap-3 text-white font-bold 
+            border-round hover:bg-aq fadein 
+            animation-duration-1000" style="cursor: default;">
+                <div>
+                    {{username}} <i class="pi pi-user"></i>
+                </div>
+
+                <a [routerLink]="'/get-started/personal-info'" class="pi  pi-cog no-underline text-white text-base font-bold"></a>
+            </div>
+        </ng-template>
+
+    </p-menubar>
 </div>
