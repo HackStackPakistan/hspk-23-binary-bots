@@ -89,7 +89,7 @@ export class SignUpComponent {
           }));
 
           localStorage.setItem("accessToken", accessToken);
-          this.router.navigate(['/get-started']);
+          
         }
       }
     } catch (error: FirebaseError | unknown) {
@@ -110,7 +110,7 @@ export class SignUpComponent {
       this.authService.isAPIBeingCalled = false;
       this.router.navigate(['/not-found']);
     } finally {
-      this.router.navigate(['/']);
+      this.router.navigate(['/get-started/personal-info']);
     }
   }
 }
